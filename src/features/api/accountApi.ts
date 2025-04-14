@@ -45,21 +45,21 @@ export const fetchUser = createAsyncThunk(
     }
 )
 
-export const updateUser = createAsyncThunk<UserProfile, UserData, { state: RootState }>(
-    "user/update",
+export const updateUser = createAsyncThunk<UserProfile, UserData, {state: RootState}>(
+    'users/update',
     async (user, {getState}) => {
         const response = await fetch(`${base_url}/account/user`, {
-            method: "Put",
+            method: 'Put',
             body: JSON.stringify(user),
             headers: {
-                "Content-Type": "application/json",
+                'Content-Type' : 'application/json',
                 Authorization: getState().token
             }
         })
-        if (response.status === 401) {
+        if(response.status === 401){
             throw new Error(`login or password incorrect`)
         }
-        if (!response.ok) {
+        if(!response.ok){
             throw new Error(`Something went wrong`);
         }
         return await response.json();

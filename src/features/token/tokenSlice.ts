@@ -15,7 +15,7 @@ const tokenSlice = createSlice({
             .addCase(registerUser.fulfilled,
                 (_state, action) => action.payload.token)
             .addCase(fetchUser.fulfilled,
-                (_state, action) => action.payload.user)
+                (_state, action) => action.payload.token)
             .addCase(changePassword.fulfilled,
                 (_state, action) => action.payload)
     }
